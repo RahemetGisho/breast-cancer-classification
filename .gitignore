@@ -1,0 +1,28 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.venv/
+venv/
+.coverage
+
+# data & artifacts
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+mlruns.db
+mlruns.db-*
+logs/
+*.joblib
+!models/model_registry/.gitkeep
+reports/powerbi/*.csv
+
+# env
+.env
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/

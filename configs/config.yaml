@@ -1,0 +1,39 @@
+project:
+  name: breast-cancer-classification
+  random_seed: 42
+
+data:
+  test_size: 0.2
+  # stratify on target to preserve class balance across train/test
+  stratify: true
+
+preprocessing:
+  # "class_weight" (no resampling) or "smote" (resample minority class)
+  imbalance_strategy: "class_weight"
+  scaler: "standard" # standard | robust
+
+training:
+  cv_folds: 5
+  scoring_metric: "recall" # primary metric for model selection (malignant = positive class)
+  models:
+    - logistic_regression
+    - random_forest
+    - xgboost
+
+tuning:
+  n_trials: 40
+  timeout_seconds: 600
+
+model_registry:
+  dir: "models/model_registry"
+  active_model_filename: "best_model.joblib"
+  metadata_filename: "model_metadata.json"
+
+quality_gate:
+  # CI/tests fail if the trained model does not clear this bar on the held-out test set.
+  min_recall_malignant: 0.90
+  min_roc_auc: 0.95
+
+logging:
+  level: "INFO"
+  predictions_log_path: "logs/predictions.jsonl"
