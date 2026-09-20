@@ -6,7 +6,7 @@ __pycache__/
 .venv/
 venv/
 .coverage
-
+models/model_registry/model_metadata.json
 # data & artifacts
 data/raw/*
 data/processed/*
