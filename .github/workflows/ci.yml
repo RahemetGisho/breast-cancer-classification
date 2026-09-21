@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dev dependencies
-        run: pip install -r requirements-.txt
+        run: pip install -r requirements.txt
       - name: Run ruff
         run: ruff check src/ api/ tests/
 
@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dev dependencies
-        run: pip install -r requirements-dev.txt
+        run: pip install -r requirements.txt
       - name: Train model (required before API tests can load it)
         run: python -m src.models.train
       - name: Run test suite with coverage
